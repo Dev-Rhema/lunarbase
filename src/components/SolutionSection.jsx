@@ -33,7 +33,7 @@ const SolutionSection = () => {
             oracle-anchored quotes. No solver market, no intent auction, no off-chain negotiation.
           </p></motion.div>{
     /* Core Pillars */
-  }<div className="mb-20 grid gap-6 md:grid-cols-3">{[
+  }<div className="mb-20 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{[
     {
       icon: Radio,
       title: "ORACLE-ANCHORED",

@@ -51,7 +51,7 @@ const ProblemSection = () => {
           Every swap on Base carries an invisible tax. On{" "}
           <span className="text-foreground">$34B in monthly DEX volume</span>, that is tens of
           millions flowing to arbitrage instead of users:
-        </motion.p><div className="grid gap-8 md:grid-cols-3">{taxes.map((tax, i) => {
+        </motion.p><div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">{taxes.map((tax, i) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-80px" });
     return <motion.div

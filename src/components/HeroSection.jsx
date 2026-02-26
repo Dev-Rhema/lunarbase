@@ -1,6 +1,12 @@
-import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { useState } from "react";
+
+const NAV_ITEMS = ["PROBLEM", "SOLUTION", "ECONOMICS", "PRECEDENT", "ROADMAP", "TEAM"];
+
 const HeroSection = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <section className="relative h-[100dvh] w-screen overflow-hidden">
       {/* Video Background */}
@@ -22,14 +28,20 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="relative z-10 flex items-center justify-between px-8 py-6 md:px-16"
+        className="relative z-20"
       >
-        <div className="font-display text-lg tracking-[0.3em] text-foreground text-glow">
-          LUNARBASE
-        </div>
-        <div className="hidden md:flex items-center gap-8 font-body text-sm tracking-wider text-muted-foreground">
-          {["PROBLEM", "SOLUTION", "ECONOMICS", "PRECEDENT", "ROADMAP"].map(
-            (item) => (
+        <div className="flex items-center justify-between px-8 py-6 md:px-16">
+          <a href="#" aria-label="Lunarbase">
+            <img
+              src="/images/logo.svg"
+              alt="Lunarbase"
+              className="h-8 w-auto"
+            />
+          </a>
+
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center gap-8 font-body text-sm tracking-wider text-muted-foreground">
+            {NAV_ITEMS.map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -37,12 +49,47 @@ const HeroSection = () => {
               >
                 {item}
               </a>
-            ),
-          )}
+            ))}
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden text-muted-foreground hover:text-primary transition-colors duration-300 p-1"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
+
+        {/* Mobile menu dropdown */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden md:hidden border-t border-border/30 bg-background/90 backdrop-blur-md"
+            >
+              <div className="flex flex-col px-8 py-4 gap-5">
+                {NAV_ITEMS.map((item) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={() => setMenuOpen(false)}
+                    className="font-body text-sm tracking-[0.4em] text-muted-foreground hover:text-primary transition-colors duration-300"
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.nav>
       {/* Hero Content */}
-      <div className="relative z-10 flex h-[calc(100dvh-88px)] flex-col items-center justify-center px-4 text-center">
+      <div className="relative z-10 flex h-[calc(100dvh-88px)] flex-col items-center justify-center px-6 text-center">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -61,7 +108,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 1.3 }}
-          className="font-display text-5xl font-bold tracking-wider text-foreground text-glow-strong md:text-7xl lg:text-8xl"
+          className="font-display text-5xl font-bold tracking-wider text-foreground text-glow-strong md:text-6xl lg:text-8xl"
         >
           PROPDEX
         </motion.h1>
