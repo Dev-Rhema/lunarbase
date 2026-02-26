@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 90%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 90%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 90%;
+
+    --primary: 210 15% 70%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 85%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 50%;
+
+    --accent: 210 20% 30%;
+    --accent-foreground: 210 15% 85%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 210 15% 50%;
+
+    --radius: 0.5rem;
+
+    --lunar-glow: 210 30% 60%;
+    --lunar-surface: 0 0% 18%;
+    --lunar-crater: 0 0% 8%;
+    --lunar-dust: 30 5% 60%;
+
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 210 15% 70%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 85%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 210 15% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px hsl(210 30% 60% / 0.4), 0 0 60px hsl(210 30% 60% / 0.15);
+  }
+
+  .text-glow-strong {
+    text-shadow: 0 0 30px hsl(210 30% 60% / 0.6), 0 0 80px hsl(210 30% 60% / 0.25), 0 0 120px hsl(210 30% 60% / 0.1);
+  }
+
+  .border-glow {
+    box-shadow: 0 0 15px hsl(210 30% 60% / 0.15), inset 0 0 15px hsl(210 30% 60% / 0.05);
+  }
+
+  .card-lunar {
+    background: linear-gradient(135deg, hsl(0 0% 8%) 0%, hsl(0 0% 5%) 100%);
+    border: 1px solid hsl(0 0% 16%);
+    box-shadow: 0 0 30px hsl(210 30% 60% / 0.05);
+  }
+
+  .card-lunar:hover {
+    border-color: hsl(210 30% 60% / 0.3);
+    box-shadow: 0 0 40px hsl(210 30% 60% / 0.1);
+  }
+
+  .gradient-lunar {
+    background: linear-gradient(180deg, hsl(0 0% 4%) 0%, hsl(210 10% 8%) 50%, hsl(0 0% 4%) 100%);
+  }
+
+  .scanline {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(0 0% 100% / 0.02) 2px,
+      hsl(0 0% 100% / 0.02) 4px
+    );
+  }
+}

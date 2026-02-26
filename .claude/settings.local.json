@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -rn \"from.*components/ui\" /c/Users/Rhema/Desktop/LunarBase/src/App.jsx /c/Users/Rhema/Desktop/LunarBase/src/pages/ /c/Users/Rhema/Desktop/LunarBase/src/components/[^u]*.jsx)",
+      "Bash(node convert.js)",
+      "Bash(npm run build)"
+    ]
+  }
+}
