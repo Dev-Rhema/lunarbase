@@ -35,7 +35,7 @@ const HeroSection = () => {
             <img
               src="/images/logo.svg"
               alt="Lunarbase"
-              className="h-8 w-auto"
+              className="h-8 w-auto md:h-10 lg:h-14"
             />
           </a>
 
